@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Screener</title>
+</head>
+<body>
+    <h1>Resume Screening System</h1>
+
+    <form action="/predict" method="POST">
+        <textarea name="resume" rows="10" cols="50" placeholder="Paste resume here"></textarea>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if prediction %}
+        <h2>Result: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
