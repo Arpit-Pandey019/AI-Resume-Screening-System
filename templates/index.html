@@ -2,18 +2,23 @@
 <html>
 <head>
     <title>AI Resume Screener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h1>Resume Screening System</h1>
+    <div class="container">
+        <h1>AI Resume Screening System</h1>
 
-    <form action="/predict" method="POST">
-        <textarea name="resume" rows="10" cols="50" placeholder="Paste resume here"></textarea>
-        <br>
-        <button type="submit">Check</button>
-    </form>
+        <form action="/predict" method="POST">
+            <textarea name="resume" placeholder="Paste your resume here..."></textarea>
+            <button type="submit">Analyze Resume</button>
+        </form>
 
-    {% if prediction %}
-        <h2>Result: {{ prediction }}</h2>
-    {% endif %}
+        {% if prediction %}
+        <div class="result">
+            Result: {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
