@@ -1,8 +1,12 @@
+import os
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import joblib
 from utils import clean_text
+
+# ✅ ADD THIS LINE (IMPORTANT FIX)
+os.makedirs("ml_model", exist_ok=True)
 
 # sample dataset (replace with real dataset later)
 data = pd.read_csv("data/resumes_dataset.csv")
@@ -16,6 +20,7 @@ y = data['label']
 model = MultinomialNB()
 model.fit(X, y)
 
+# saving model
 joblib.dump(model, "ml_model/resume_model.pkl")
 joblib.dump(vectorizer, "ml_model/vectorizer.pkl")
 
